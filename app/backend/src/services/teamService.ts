@@ -1,19 +1,16 @@
-import { ITeam } from '../interfaces';
+import { ModelStatic } from 'sequelize';
 import Team from '../database/models/Team';
 
-const getAllTeams = async ():Promise<ITeam[]> => {
-  const getTeam = await Team.findAll();
-  return getTeam;
-};
+export default class TeamService {
+  private model : ModelStatic<Team> = Team;
 
-const getOneTeam = async (id: number) => {
-  const OneTeam = await Team.findByPk(id);
-  return OneTeam;
-};
+  public async getAllTeams() {
+    const getTeam = await this.model.findAll();
+    return getTeam;
+  }
 
-const teamService = {
-  getAllTeams,
-  getOneTeam,
-};
-
-export default teamService;
+  public async getOneTeam(id: number) {
+    const OneTeam = await this.model.findByPk(id);
+    return OneTeam;
+  }
+}
