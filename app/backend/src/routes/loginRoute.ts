@@ -1,12 +1,20 @@
 import express = require ('express');
 
-import verifyRequiredFields from '../middlewares/verifyRequiredFields';
+import loginValidations from '../middlewares/loginValidations';
 import LoginController from '../controllers/loginController';
 
 const loginRoute = express.Router();
 
 const loginController = new LoginController();
 
-loginRoute.post('/', verifyRequiredFields('login'), loginController.login);
+loginRoute.post(
+  '/',
+  loginValidations.reqFields,
+  loginValidations.validatePassword,
+  loginValidations.validateEmail,
+  loginController.login,
+);
+
+loginRoute.get('/role', loginValidations.validateToken, loginController.verifyLogin);
 
 export default loginRoute;
