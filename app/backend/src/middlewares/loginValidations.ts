@@ -10,20 +10,20 @@ const reqFields = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-const validateEmail = (req: Request, res: Response, next: NextFunction) => {
-  const { email } = req.body;
-  if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-    return res.status(400).json({
+const validatePassword = (req: Request, res: Response, next: NextFunction) => {
+  const { password } = req.body;
+  if (password.length < 6) {
+    return res.status(401).json({
       message: 'Invalid email or password',
     });
   }
   return next();
 };
 
-const validatePassword = (req: Request, res: Response, next: NextFunction) => {
-  const { password } = req.body;
-  if (password.length < 6) {
-    return res.status(400).json({
+const validateEmail = (req: Request, res: Response, next: NextFunction) => {
+  const { email } = req.body;
+  if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    return res.status(401).json({
       message: 'Invalid email or password',
     });
   }

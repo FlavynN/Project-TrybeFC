@@ -10,8 +10,8 @@ const loginController = new LoginController();
 loginRoute.post(
   '/',
   loginValidations.reqFields,
-  loginValidations.validatePassword,
   loginValidations.validateEmail,
+  loginValidations.validatePassword,
   loginController.login,
 );
 
