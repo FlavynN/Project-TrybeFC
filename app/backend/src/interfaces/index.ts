@@ -15,3 +15,11 @@ export interface ILogin {
   email: string;
   password: string;
 }
+
+export interface IMatches {
+  homeTeamId: number,
+  homeTeamGoals: number,
+  awayTeamId: number,
+  awayTeamGoals: number,
+  inProgress: boolean,
+}

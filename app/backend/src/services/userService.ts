@@ -6,10 +6,10 @@ import TokenJwt from '../auth.ts/token';
 const invalid = 'Invalid email or password';
 
 export default class UserService {
-  private model : ModelStatic<Users> = Users;
+  private _model : ModelStatic<Users> = Users;
 
   public async loginFunction(email: string, password: string) {
-    const user = await this.model.findOne({ where: { email } });
+    const user = await this._model.findOne({ where: { email } });
     if (!user) {
       return { type: 'INVALID_VALUES', message: invalid };
     }
@@ -18,7 +18,6 @@ export default class UserService {
       return { type: 'INVALID_VALUES', message: invalid };
     }
     const { id, role } = user;
-    console.log(user.role);
     const token = new TokenJwt().generateToken({ id, role });
 
     return { type: null, message: token };
