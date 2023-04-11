@@ -26,4 +26,30 @@ export default class MatchService {
     );
     return progress;
   }
+
+  public async finishMatch(id: number) {
+    const match = await this._model.update(
+      {
+        inProgress: false,
+      },
+      {
+        where: { id },
+      },
+    );
+    return match;
+  }
+
+  public async updateMatch(id: number, homeTeamGoals: number, awayTeamGoals: number) {
+    const match = await this._model.update(
+      {
+        inProgress: true,
+        homeTeamGoals,
+        awayTeamGoals,
+      },
+      {
+        where: { id },
+      },
+    );
+    return match;
+  }
 }
