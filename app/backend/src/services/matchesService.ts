@@ -52,4 +52,22 @@ export default class MatchService {
     );
     return match;
   }
+
+  public async createMatch(
+    homeTeamId: number,
+    homeTeamGoals:number,
+    awayTeamId:number,
+    awayTeamGoals: number,
+  ) {
+    const newMatch = await this._model.create(
+      {
+        homeTeamId,
+        homeTeamGoals,
+        awayTeamId,
+        awayTeamGoals,
+        inProgress: true,
+      },
+    );
+    return newMatch;
+  }
 }
