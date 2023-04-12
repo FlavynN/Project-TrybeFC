@@ -1,3 +1,4 @@
+import leaderBoard from '../utils/totalBoard';
 import away from '../utils/queryAwayBoard';
 import home from '../utils/queryHomeBoard';
 import Matches from '../database/models';
@@ -12,6 +13,11 @@ export default class LeaderboardService {
 
   public async getAway() {
     const [result] = await this._model.query(away);
+    return result;
+  }
+
+  public async totalResults() {
+    const [result] = await this._model.query(leaderBoard);
     return result;
   }
 }
