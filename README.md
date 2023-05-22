@@ -10,6 +10,7 @@ The TFC is a website about soccer that contains various information about a cham
 * Sequelize
 * MySQL
 * Nodemom
+* Typescript 
 
 ## What was build?
 * **Docker Containers** for front, back and database
