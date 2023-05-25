@@ -12,8 +12,8 @@ The TFC is a website about soccer that contains various information about a cham
 * Nodemom
 * Typescript 
 
-## What was build?
-Was build an POO backend with Typescript that contains:
+## What was built?
+Was built an POO backend with Typescript that contains:
 * **Docker Containers** for front, back and database
 * **Mysql database**
 * **API CRUD**
